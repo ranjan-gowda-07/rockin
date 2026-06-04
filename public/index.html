@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rockin 🪨 | Where music defies gravity</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Rockin is an antigravity-themed space-music social media platform where music meets space in zero gravity. Post tunes, share stellar vibes, and defy gravity.">
+  <meta name="keywords" content="rockin, social media, space music, antigravity, zero gravity, music platform">
+  <!-- Google Fonts: Syne (800) for Headings, Space Mono for Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN for easy, beautiful cosmic icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Core Design CSS -->
+  <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+
+  <!-- Starfield background -->
+  <canvas id="starfield"></canvas>
+
+  <!-- Notification Banner -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Main App Shell -->
+  <div class="app-container">
+    
+    <!-- Top Header Bar -->
+    <header class="main-header">
+      <div class="logo-container" id="header-logo">
+        <h1 class="logo-text">Rockin <span class="logo-symbol">🪨</span></h1>
+        <p class="tagline">where music defies gravity</p>
+      </div>
+      <div class="header-actions" id="header-auth-actions">
+        <!-- Auth buttons or user profile shortcut injected by JS -->
+      </div>
+    </header>
+
+    <!-- Main Content Area where SPA views are injected -->
+    <main id="app-view" class="view-content">
+      <!-- Injected by app.js -->
+    </main>
+
+    <!-- Global Loader (Orbital Spinner) -->
+    <div id="global-loader" class="loader-overlay hidden">
+      <div class="orbit-spinner-container">
+        <svg class="orbit-spinner" viewBox="0 0 50 50">
+          <circle class="orbit-track" cx="25" cy="25" r="20" fill="none" stroke-width="2"></circle>
+          <circle class="orbit-ring" cx="25" cy="25" r="20" fill="none" stroke-width="3"></circle>
+        </svg>
+        <span class="loading-text">Defying gravity...</span>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation Bar (Fixed, Glassmorphic) -->
+    <nav class="bottom-nav hidden" id="main-nav">
+      <a href="/" class="nav-item active" id="nav-feed" data-route="/">
+        <i data-lucide="home"></i>
+        <span>Feed</span>
+      </a>
+      <a href="/explore" class="nav-item" id="nav-explore" data-route="/explore">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+      <button class="nav-item nav-create-btn" id="nav-create-trigger">
+        <div class="create-glow-btn">
+          <i data-lucide="rocket"></i>
+        </div>
+      </button>
+      <a href="/profile" class="nav-item" id="nav-profile" data-route="/profile">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Create Post Modal Overlay -->
+  <div class="modal-overlay hidden" id="create-post-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Launch Post</h2>
+        <button class="close-btn" id="create-modal-close">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <form id="create-post-form" enctype="multipart/form-data">
+        <div class="textarea-container">
+          <textarea id="post-content-input" placeholder="What beats are defying gravity in your head? Use #hashtags..." maxlength="500" required></textarea>
+          <div class="textarea-footer">
+            <span id="char-counter">0/500</span>
+          </div>
+        </div>
+
+        <!-- Hashtag Suggestions -->
+        <div id="hashtag-suggestions" class="tag-suggestions hidden"></div>
+
+        <!-- File Upload Preview Area -->
+        <div class="upload-preview-container hidden" id="preview-container">
+          <button type="button" class="remove-preview-btn" id="remove-preview-btn">
+            <i data-lucide="trash-2"></i>
+          </button>
+          <img id="image-preview" class="media-preview hidden" src="" alt="Image preview">
+          <video id="video-preview" class="media-preview hidden" controls></video>
+        </div>
+
+        <div class="modal-footer">
+          <label class="media-upload-label" for="post-media-input">
+            <i data-lucide="image"></i>
+            <span>Add Media</span>
+            <input type="file" id="post-media-input" name="media" accept="image/*,video/*" class="hidden-file-input">
+          </label>
+          <button type="submit" class="submit-btn" id="launch-post-btn">
+            <span class="btn-text">Launch Post</span>
+            <i data-lucide="rocket" class="rocket-icon"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- App Main Client Script -->
+  <script src="/app.js"></script>
+</body>
+</html>
